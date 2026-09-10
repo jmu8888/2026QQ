@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 大华府秦腔吃唱大会 Tech Sheet</title>
+<style>
+  :root{
+    --bg:#f4f1ea;
+    --card:#ffffff;
+    --ink:#2b2420;
+    --ink-soft:#6b5d52;
+    --line:#e4dccf;
+    --accent:#8c1f28;
+    --accent-soft:#f4e2df;
+    --gold:#b8892b;
+    --gold-soft:#f6ecd6;
+    --band:#8c1f28;
+    --band-ink:#fff;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1b1613;
+      --card:#241d19;
+      --ink:#f1e9df;
+      --ink-soft:#c9baa9;
+      --line:#3a2f28;
+      --accent:#e2626c;
+      --accent-soft:#3a2224;
+      --gold:#e0b25b;
+      --gold-soft:#3a301c;
+      --band:#5c151b;
+      --band-ink:#f8e3e3;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1b1613;
+    --card:#241d19;
+    --ink:#f1e9df;
+    --ink-soft:#c9baa9;
+    --line:#3a2f28;
+    --accent:#e2626c;
+    --accent-soft:#3a2224;
+    --gold:#e0b25b;
+    --gold-soft:#3a301c;
+    --band:#5c151b;
+    --band-ink:#f8e3e3;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+    padding:32px 16px 64px;
+  }
+  .wrap{max-width:920px;margin:0 auto;}
+  header.title{
+    text-align:center;
+    padding:28px 20px 24px;
+    margin-bottom:20px;
+    border-bottom:3px solid var(--accent);
+  }
+  header.title h1{
+    margin:0 0 6px;
+    font-size:clamp(22px,4vw,30px);
+    letter-spacing:.02em;
+    color:var(--accent);
+  }
+  header.title p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:14px;
+    letter-spacing:.05em;
+  }
+  .session{
+    margin:32px 0 14px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .session h2{
+    margin:0;
+    font-size:20px;
+    background:var(--band);
+    color:var(--band-ink);
+    padding:8px 22px;
+    border-radius:999px;
+    letter-spacing:.08em;
+  }
+  .session .line{flex:1;height:1px;background:var(--line);}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,.06);
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14.5px;
+  }
+  thead th{
+    text-align:left;
+    font-size:13px;
+    letter-spacing:.06em;
+    color:var(--ink-soft);
+    background:var(--gold-soft);
+    padding:10px 14px;
+    border-bottom:2px solid var(--gold);
+    white-space:nowrap;
+  }
+  tbody td{
+    padding:11px 14px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr.item:hover{background:var(--accent-soft);}
+  td.num{
+    font-weight:700;
+    color:var(--accent);
+    width:44px;
+    white-space:nowrap;
+  }
+  td.title{font-weight:500;}
+  td.dur, td.mic{white-space:nowrap;color:var(--ink-soft);}
+  td.acc{white-space:nowrap;}
+  .tag{
+    display:inline-block;
+    padding:2px 9px;
+    border-radius:999px;
+    font-size:12.5px;
+    font-weight:600;
+  }
+  .tag.mp3{background:#e3edf7;color:#2f5f8a;}
+  .tag.band{background:#fde9d0;color:#9a5a12;}
+  .tag.none{background:#eee;color:#888;}
+  :root[data-theme="dark"] .tag.mp3, @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag.mp3{background:#213244;color:#9cc4ea;}}
+  :root[data-theme="dark"] .tag.band{background:#3d2c14;color:#f0b866;}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag.band{background:#3d2c14;color:#f0b866;}}
+  :root[data-theme="dark"] .tag.none{background:#333;color:#aaa;}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag.none{background:#333;color:#aaa;}}
+
+  tr.cue td{
+    background:var(--gold-soft);
+    color:var(--gold);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.04em;
+    padding:9px 14px;
+    text-align:center;
+  }
+  tr.intermission td{
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-weight:700;
+    text-align:center;
+    padding:14px;
+  }
+  tr.intermission.minor td{
+    background:transparent;
+    color:var(--ink-soft);
+    font-weight:500;
+    font-style:italic;
+    text-align:center;
+    padding:8px 14px;
+  }
+  footer{
+    text-align:center;
+    margin-top:36px;
+    color:var(--ink-soft);
+    font-size:12.5px;
+  }
+  @media (max-width:600px){
+    thead{display:none;}
+    tbody td{display:block;padding:4px 14px;border-bottom:none;}
+    tbody tr.item{
+      display:block;
+      padding:10px 0 12px;
+      border-bottom:1px solid var(--line);
+    }
+    tbody tr.item td.num{
+      display:inline-block;
+      float:left;
+      margin-right:8px;
+    }
+    tbody tr.item td.title{
+      padding-left:34px;
+      margin-top:-2px;
+    }
+    tbody tr.item td.dur::before{content:"时长 ";color:var(--ink-soft);font-weight:400;}
+    tbody tr.item td.acc::before{content:"伴奏 ";color:var(--ink-soft);font-weight:400;}
+    tbody tr.item td.mic::before{content:"话筒 ";color:var(--ink-soft);font-weight:400;}
+    tbody tr.item td.dur,
+    tbody tr.item td.acc,
+    tbody tr.item td.mic{
+      padding-left:34px;
+      display:inline-block;
+      margin-right:14px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="title">
+    <h1>2026 大华府秦腔吃唱大会</h1>
+    <p>TECH SHEET · 技术运行单</p>
+  </header>
+
+  <div class="session">
+    <h2>上午场</h2>
+    <div class="line"></div>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr><th>序号</th><th>节目</th><th>时长</th><th>伴奏音乐</th><th>话筒</th></tr>
+      </thead>
+      <tbody>
+        <tr class="item"><td class="num">1</td><td class="title">秦腔《三滴血·兄弟窗前把书念》</td><td class="dur">3:38分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持</td></tr>
+        <tr class="item"><td class="num">2</td><td class="title">男声秦腔合唱《二堂舍子·刘彦昌哭的两泪汪》</td><td class="dur">5:05分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持</td></tr>
+        <tr class="item"><td class="num">3</td><td class="title">秦腔《斩单童·喝喊一声绑帐外》</td><td class="dur">3:30分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持</td></tr>
+        <tr class="item"><td class="num">4</td><td class="title">秦腔《再续红梅缘·梅花红柳丝牵》</td><td class="dur">5:41分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持</td></tr>
+        <tr class="item"><td class="num">5</td><td class="title">秦腔《龙凤呈祥·孙尚香坐画阁自思自叹》</td><td class="dur">6:44分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持</td></tr>
+        <tr class="item"><td class="num">6</td><td class="title">秦腔现代戏《洪湖赤卫队·娘的眼泪似水淌》</td><td class="dur">7:14分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持</td></tr>
+        <tr class="item"><td class="num">7</td><td class="title">模特秀《你是我心中的茉莉花》</td><td class="dur">4:49分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">&nbsp;</td></tr>
+        <tr class="cue"><td colspan="5">【乐队进入伴奏位置】</td></tr>
+        <tr class="item"><td class="num">8</td><td class="title">眉户《屠夫状元·银灯结彩，叫哥哥》</td><td class="dur">6分钟</td><td class="acc"><span class="tag band">乐队</span></td><td class="mic">手持2</td></tr>
+        <tr class="item"><td class="num">9</td><td class="title">秦腔《血泪仇·手托孙女好悲伤》</td><td class="dur">3:54分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持</td></tr>
+        <tr class="item"><td class="num">10a</td><td class="title">碗碗腔《桃园借水》</td><td class="dur">3:25分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持3</td></tr>
+        <tr class="item"><td class="num">10b</td><td class="title">碗碗腔《人面桃花》</td><td class="dur">5:02分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持3</td></tr>
+        <tr class="item"><td class="num">11</td><td class="title">京剧彩唱《红拂传·见春光三月里百花开遍》</td><td class="dur">4:47分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">耳麦1</td></tr>
+        <tr class="item"><td class="num">12</td><td class="title">秦腔彩唱《白蛇传·断桥·西湖山水》</td><td class="dur">6分钟</td><td class="acc"><span class="tag band">乐队</span></td><td class="mic">耳麦2</td></tr>
+        <tr class="item"><td class="num">13</td><td class="title">女声秦腔合唱《三滴血·家住在五台县城南五里》</td><td class="dur">3:25分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持3</td></tr>
+        <tr class="cue"><td colspan="5">器乐合奏上场</td></tr>
+        <tr class="item"><td class="num">14</td><td class="title">器乐合奏《山丹丹开花红艳艳》</td><td class="dur">5分钟</td><td class="acc"><span class="tag band">乐队</span></td><td class="mic">&nbsp;</td></tr>
+        <tr class="cue"><td colspan="5">乐队回伴奏位置</td></tr>
+        <tr class="item"><td class="num">15</td><td class="title">京剧《状元媒·自那日与六郎阵前相见》</td><td class="dur">6:20分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持1</td></tr>
+        <tr class="item"><td class="num">16</td><td class="title">秦腔彩唱《火焰驹·表花》</td><td class="dur">6分钟</td><td class="acc"><span class="tag band">乐队</span></td><td class="mic">耳麦2</td></tr>
+        <tr class="intermission"><td colspan="5">中场休息</td></tr>
+        <tr class="intermission minor"><td colspan="5">社长讲话，合影</td></tr>
+        <tr class="item"><td class="num">17</td><td class="title">全体大合唱《祖籍陕西韩城县》</td><td class="dur">1:51分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">全部</td></tr>
+        <tr class="intermission minor"><td colspan="5">用餐</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="session">
+    <h2>下午场</h2>
+    <div class="line"></div>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr><th>序号</th><th>节目</th><th>预估时长</th><th>伴奏音乐</th><th>话筒</th></tr>
+      </thead>
+      <tbody>
+        <tr class="item"><td class="num">18</td><td class="title">相声《聊秦腔》</td><td class="dur">10分钟</td><td class="acc"><span class="tag none">无</span></td><td class="mic">手持2</td></tr>
+        <tr class="cue"><td colspan="5">【乐队进入伴奏位置】</td></tr>
+        <tr class="item"><td class="num">19</td><td class="title">秦腔现代戏《智取威虎山·八年前风雪夜》</td><td class="dur">6分钟</td><td class="acc"><span class="tag band">乐队</span></td><td class="mic">手持1</td></tr>
+        <tr class="cue"><td colspan="5">【乐队退场】</td></tr>
+        <tr class="item"><td class="num">20</td><td class="title">旗袍舞蹈《夜上海》</td><td class="dur">2:54分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">&nbsp;</td></tr>
+        <tr class="item"><td class="num">21a</td><td class="title">电视剧《主角》主题曲《我站在舞台中央》</td><td class="dur">4:19分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持1</td></tr>
+        <tr class="item"><td class="num">21b</td><td class="title">电视剧《主角》片尾曲《梦醒了》</td><td class="dur">3:59分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">手持1</td></tr>
+        <tr class="item"><td class="num">22</td><td class="title">全体大合唱《华盛顿秦腔社社歌——秦腔一声传天外》</td><td class="dur">3:27分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">全部</td></tr>
+        <tr class="item"><td class="num">23</td><td class="title">旗袍引领，全场热舞《目瑙纵歌》</td><td class="dur">4:57分钟</td><td class="acc"><span class="tag mp3">MP3</span></td><td class="mic">&nbsp;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>2026 大华府秦腔吃唱大会 &middot; Tech Sheet</footer>
+</div>
+</body>
+</html>
